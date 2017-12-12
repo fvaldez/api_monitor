@@ -1,0 +1,15 @@
+{
+  "name": "api_monitor",
+  "version": "1.0.0",
+  "description": "API Monitor Project",
+  "directories":{
+    "postman":"postman"
+  },
+  "scripts": {
+    "api-test-production": "newman run postman/api_monitor.postman_collection.json -e postman/API_Monitor_Environment.postman_environment.json "
+  },
+  "author": "Fernando Valdez",
+  "dependencies": {
+    "newman": "^3.9.1"
+  }
+}

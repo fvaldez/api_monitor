@@ -1,0 +1,86 @@
+{
+	"info": {
+		"name": "api_monitor",
+		"_postman_id": "449ea7f3-7b2f-8160-e057-9010cd3430e6",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "POST Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b16ca16f-45bf-48a6-8ec8-1f06f4ef8e5d",
+						"type": "text/javascript",
+						"exec": [
+							"",
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"tests[\"Body has token\"] = responseBody.has(\"bearer\");",
+							"tests[\"Body has User Information\"] = responseBody.has(\"email\");",
+							"",
+							"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "{{url}}/login",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"login"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "GET Profile",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ebab840f-a743-4c22-a25c-bf0efd05710f",
+						"type": "text/javascript",
+						"exec": [
+							"",
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"tests[\"Body has ID\"] = responseBody.has(\"id\");",
+							"tests[\"Body has User Information\"] = responseBody.has(\"email\");",
+							"",
+							"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "{{url}}/profile",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"profile"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
