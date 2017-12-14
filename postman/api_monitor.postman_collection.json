@@ -12,7 +12,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "b16ca16f-45bf-48a6-8ec8-1f06f4ef8e5d",
+						"id": "b690f183-5b1f-4e4c-a182-d935788685d3",
 						"type": "text/javascript",
 						"exec": [
 							"",
@@ -76,6 +76,122 @@
 					],
 					"path": [
 						"profile"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "GET photos",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "dd941ffd-f29a-400f-a495-c22cc94201dd",
+						"type": "text/javascript",
+						"exec": [
+							"",
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"var data = JSON.parse(responseBody);",
+							"",
+							"tests[\"Assignment List size\"] = data.length > 0;",
+							"",
+							"",
+							"var schema = {",
+							"    \"items\": {",
+							"        \"type\": \"object\",",
+							"        \"properties\" : {",
+							"            \"albumId\": { \"type\" : \"number\" },",
+							"            \"id\": { \"type\" : \"number\" },",
+							"            \"title\": { \"type\" : \"string\" },",
+							"            \"url\": { \"type\" : \"string\" },",
+							"            \"thumbnailUrl\": { \"type\" : \"string\" },",
+							"        }",
+							"    }",
+							"};",
+							"",
+							"",
+							"tests[\"Data Structure Validation\"] = tv4.validate(data, schema);",
+							"",
+							"if(tv4.error){",
+							"    console.log(\"Validation failed: \", tv4.error);",
+							"}",
+							"",
+							"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "{{url}}/photos",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"photos"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "GET titles",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "93f69b63-395c-46f1-9dd1-424b2c1b0640",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"tests[\"Response time is acceptable\"] = _.inRange(responseTime, 1, 3000);",
+							"var data = JSON.parse(responseBody);",
+							"",
+							"tests[\"Assignment List size\"] = data.length > 0;",
+							"",
+							"var schema = {",
+							" \"items\": {",
+							" \"type\": \"object\",",
+							" \"properties\" : {",
+							"    \"userId\": { \"type\" : \"number\" },",
+							"    \"id\": { \"type\" : \"number\" },",
+							"    \"title\": { \"type\" : \"string\" }",
+							"  }",
+							" }",
+							"};",
+							"",
+							"",
+							"tests[\"Data Structure Validation\"] = tv4.validate(data, schema);",
+							"",
+							"if(tv4.error){",
+							"    console.log(\"Validation failed: \", tv4.error);",
+							"}",
+							"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "{{url}}/titles",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"titles"
 					]
 				},
 				"description": ""
