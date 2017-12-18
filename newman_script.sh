@@ -1,0 +1,1 @@
+newman run postman/api_monitor.postman_collection.json -e postman/API_Monitor_Environment.postman_environment.json --reporters html,cli,junit --reporter-junit-export newman.xml --reporter-html-template templates/htmlreqres.hbs
