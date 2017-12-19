@@ -17,7 +17,7 @@
 						"exec": [
 							"",
 							"tests[\"Status code is 200\"] = responseCode.code === 200;",
-							"tests[\"Body has token\"] = responseBody.has(\"beadfddfdrer\");",
+							"tests[\"Body has token\"] = responseBody.has(\"bearer\");",
 							"tests[\"Body has User Information\"] = responseBody.has(\"email\");",
 							"",
 							"",
