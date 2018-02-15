@@ -12,12 +12,12 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "fd6b49b3-c10e-46c3-92e0-df2fd953db78",
+						"id": "46b3f008-1448-479b-ac45-deb140ee3e25",
 						"type": "text/javascript",
 						"exec": [
 							"",
 							"tests[\"Status code is 200\"] = responseCode.code === 200;",
-							"tests[\"Body has token\"] = responseBody.has(\"bearerefef\");",
+							"tests[\"Body has token\"] = responseBody.has(\"bearer\");",
 							"tests[\"Body has User Information\"] = responseBody.has(\"email\");",
 							"",
 							"",
