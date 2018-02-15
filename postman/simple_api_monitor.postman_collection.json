@@ -1,0 +1,214 @@
+{
+	"info": {
+		"name": "simple_api_monitor",
+		"_postman_id": "69002dec-80b1-0d20-e1b7-a14188e6b65b",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "POST Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "46b3f008-1448-479b-ac45-deb140ee3e25",
+						"type": "text/javascript",
+						"exec": [
+							"",
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"tests[\"Body has token\"] = responseBody.has(\"bearer\");",
+							"tests[\"Body has User Information\"] = responseBody.has(\"email\");",
+							"",
+							"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://demo6699174.mockable.io/login",
+					"protocol": "http",
+					"host": [
+						"demo6699174",
+						"mockable",
+						"io"
+					],
+					"path": [
+						"login"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "GET Profile",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ebab840f-a743-4c22-a25c-bf0efd05710f",
+						"type": "text/javascript",
+						"exec": [
+							"",
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"tests[\"Body has ID\"] = responseBody.has(\"id\");",
+							"tests[\"Body has User Information\"] = responseBody.has(\"email\");",
+							"",
+							"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://demo6699174.mockable.io/profile",
+					"protocol": "http",
+					"host": [
+						"demo6699174",
+						"mockable",
+						"io"
+					],
+					"path": [
+						"profile"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "GET photos",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "dd941ffd-f29a-400f-a495-c22cc94201dd",
+						"type": "text/javascript",
+						"exec": [
+							"",
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"var data = JSON.parse(responseBody);",
+							"",
+							"tests[\"Assignment List size\"] = data.length > 0;",
+							"",
+							"",
+							"var schema = {",
+							"    \"items\": {",
+							"        \"type\": \"object\",",
+							"        \"properties\" : {",
+							"            \"albumId\": { \"type\" : \"number\" },",
+							"            \"id\": { \"type\" : \"number\" },",
+							"            \"title\": { \"type\" : \"string\" },",
+							"            \"url\": { \"type\" : \"string\" },",
+							"            \"thumbnailUrl\": { \"type\" : \"string\" },",
+							"        }",
+							"    }",
+							"};",
+							"",
+							"",
+							"tests[\"Data Structure Validation\"] = tv4.validate(data, schema);",
+							"",
+							"if(tv4.error){",
+							"    console.log(\"Validation failed: \", tv4.error);",
+							"}",
+							"",
+							"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://demo6699174.mockable.io/photos",
+					"protocol": "http",
+					"host": [
+						"demo6699174",
+						"mockable",
+						"io"
+					],
+					"path": [
+						"photos"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "GET titles",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "93f69b63-395c-46f1-9dd1-424b2c1b0640",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"tests[\"Response time is acceptable\"] = _.inRange(responseTime, 1, 3000);",
+							"var data = JSON.parse(responseBody);",
+							"",
+							"tests[\"Assignment List size\"] = data.length > 0;",
+							"",
+							"var schema = {",
+							" \"items\": {",
+							" \"type\": \"object\",",
+							" \"properties\" : {",
+							"    \"userId\": { \"type\" : \"number\" },",
+							"    \"id\": { \"type\" : \"number\" },",
+							"    \"title\": { \"type\" : \"string\" }",
+							"  }",
+							" }",
+							"};",
+							"",
+							"",
+							"tests[\"Data Structure Validation\"] = tv4.validate(data, schema);",
+							"",
+							"if(tv4.error){",
+							"    console.log(\"Validation failed: \", tv4.error);",
+							"}",
+							"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://demo6699174.mockable.io/titles",
+					"protocol": "http",
+					"host": [
+						"demo6699174",
+						"mockable",
+						"io"
+					],
+					"path": [
+						"titles"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
